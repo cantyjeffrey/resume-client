@@ -17,7 +17,16 @@ class Root extends Document {
   render() {
     return (
       <html>
-        <Head>{this.props.styleTags}</Head>
+        <Head>
+          <meta charSet="UTF-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
+          <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+          <title>Jeffrey Michael Canty — User Interface Engineer</title>
+          {this.props.styleTags}
+        </Head>
         <body>
           <Main className="main" />
           <NextScript />
