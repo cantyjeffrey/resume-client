@@ -8,39 +8,42 @@ import { Wrapper, List, ListItem } from "./style";
 
 const Capabilities = ({ data: { loading, error, capabilities } }) => {
   if (error) return error;
-  if (capabilities && capabilities.length) {
-    return (
-      <Wrapper>
-        <Section title="Capabilities">
-          {capabilities
-            .filter(c => c.technologies && c.technologies.length)
-            .map(c => {
-              const { name, technologies } = c;
-              return (
-                <List key={name}>
-                  {technologies.map(t => (
-                    <ListItem key={t.name}>{t.name}</ListItem>
-                  ))}
-                </List>
-              );
+  if (capabilities) {
+    const { parent } = capabilities;
+    if (parent && parent.length) {
+      return (
+        <Wrapper>
+          <Section title="Capabilities">
+            {parent.filter(p => p.children && p.children.length).map(c => {
+              if (c.children && c.children.length) {
+                return (
+                  <List key={c.name}>
+                    {c.children.map(t => (
+                      <ListItem key={t.name}>{t.name}</ListItem>
+                    ))}
+                  </List>
+                );
+              }
             })}
-        </Section>
-      </Wrapper>
-    );
+          </Section>
+        </Wrapper>
+      );
+    }
   }
   return <div>Loading</div>;
 };
 
 const AllCapabilitiesQuery = gql`
   query AllCapabilitiesQuery {
-    capabilities: taxonomies {
+    capabilities: taxonomyList(id: "BZix4rg5mCQg4ikYsAgye") {
       name
-      slug
-      description
-      technologies: children {
+      parent: taxonomies {
         name
-        url
-        description
+        children {
+          name
+          url
+          description
+        }
       }
     }
   }
