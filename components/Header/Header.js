@@ -28,11 +28,34 @@ const Header = ({ data: { loading, error, profile } }) => {
         </Column>
         <Column>
           <span>{phoneNumber}</span>
-          <Link>{emailAddress}</Link>
+          <Link
+            href="mailto:hello@jeffrey.engineer"
+            onClick={() => {
+              window.gtag("event", "link_click_email");
+            }}
+          >
+            {emailAddress}
+          </Link>
         </Column>
         <Column>
-          <Link>@{twitter}</Link>
-          <Link>https://jeffrey.engineer</Link>
+          <Link
+            href="https://twitter.com/cantyjeffrey"
+            target="_blank"
+            onClick={() => {
+              window.gtag("event", "link_click_twitter");
+            }}
+          >
+            @{twitter}
+          </Link>
+          <Link
+            href="https://jeffrey.engineer"
+            target="_blank"
+            onClick={() => {
+              window.gtag("event", "link_click_website");
+            }}
+          >
+            https://jeffrey.engineer
+          </Link>
         </Column>
       </Wrapper>
     );

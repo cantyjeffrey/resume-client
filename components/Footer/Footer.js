@@ -13,7 +13,13 @@ const Footer = () => (
       </span>
     </Tagline>
     <Column>
-      <Link target="_blank" href="https://resume-service.jff.re/">
+      <Link
+        target="_blank"
+        href="https://resume-service.jff.re/"
+        onClick={() => {
+          window.gtag("event", "link_click_generate_pdf");
+        }}
+      >
         Download as PDF
       </Link>
     </Column>

@@ -11,6 +11,9 @@ export const Wrapper = styled.div`
   grid-gap: 1rem;
   margin-bottom: 2rem;
   color: #4e4e4e;
+  @media print {
+    padding-top: 0;
+  }
 `;
 
 export const Column = styled.div`
