@@ -1,9 +1,14 @@
-import App from "../components/App";
-import PositionsList from "../components/PositionsList";
 import withData from "../lib/withData";
+
+import App from "../components/App";
+import Header from "../components/Header";
+import Body from "../components/Body";
+import Footer from "../components/Footer";
 
 export default withData(props => (
   <App>
-    <PositionsList />
+    <Header />
+    <Body />
+    <Footer />
   </App>
 ));
