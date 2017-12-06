@@ -35,6 +35,9 @@ export const TagList = styled.div`
   margin: 0 0 1rem;
   display: inline-flex;
   flex-wrap: wrap;
+  @media print {
+    display: none;
+  }
 `;
 
 export const Tag = styled.a`
