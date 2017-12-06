@@ -21,7 +21,8 @@ const Projects = ({ data: { loading, error, projects } }) => {
                 company,
                 startDate,
                 endDate,
-                isCurrent
+                isCurrent,
+                tags
               } = project;
               const { location } = company;
               return (
@@ -34,6 +35,7 @@ const Projects = ({ data: { loading, error, projects } }) => {
                   startDate={startDate}
                   endDate={endDate}
                   isCurrent={isCurrent}
+                  tags={tags}
                 />
               );
             })}

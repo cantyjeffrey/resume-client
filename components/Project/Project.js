@@ -9,7 +9,9 @@ import {
   MetaDateRange,
   MetaDate,
   Summary,
-  Content
+  Content,
+  TagList,
+  Tag
 } from "./style";
 import { Title, Emphasis } from "../Typography";
 
@@ -27,7 +29,8 @@ const Project = ({
   startDate,
   endDate,
   summary,
-  isCurrent
+  isCurrent,
+  tags
 }) => (
   <Wrapper isCurrent={isCurrent}>
     <Header>
@@ -51,6 +54,27 @@ const Project = ({
     </Header>
     <Summary>
       <Content>{summary}</Content>
+      {tags &&
+        tags.length && (
+          <TagList>
+            {tags.map(t => (
+              <Tag
+                key={t.name}
+                href={t.url}
+                title={t.description}
+                target="_blank"
+                onClick={() => {
+                  window.gtag("event", "link_click_tag", {
+                    url: t.url,
+                    name: t.name
+                  });
+                }}
+              >
+                {t.name}
+              </Tag>
+            ))}
+          </TagList>
+        )}
     </Summary>
   </Wrapper>
 );

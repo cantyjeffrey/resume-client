@@ -9,12 +9,13 @@ import Section from "../Section";
 const Summary = ({ data: { loading, error, profile } }) => {
   if (error) return error;
 
-  if (profile && profile.summary) {
-    const { summary } = profile;
+  if (profile && profile.summary && profile.status) {
+    const { summary, status } = profile;
     return (
       <Wrapper>
         <Section title="Summary">
           <p>{summary}</p>
+          <p>{status}</p>
         </Section>
       </Wrapper>
     );
@@ -26,6 +27,7 @@ const SummaryQuery = gql`
   query SummaryQuery {
     profile(id: "4QxFybelVSMYgMwuIYeIYc") {
       summary
+      status
     }
   }
 `;
