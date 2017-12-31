@@ -11,10 +11,11 @@ const Summary = ({ data: { loading, error, profile } }) => {
 
   if (profile && profile.summary && profile.status) {
     const { summary, status } = profile;
+
     return (
       <Wrapper>
         <Section title="Summary">
-          <p>{summary}</p>
+          {summary.split("\n\n").map((t, i) => <p key={i}>{t}</p>)}
           <p>{status}</p>
         </Section>
       </Wrapper>
